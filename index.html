@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>For Kuroo 💙</title>
+
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(to bottom, #001f3f, #003366);
+  color: white;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* fade awal */
+.fade {
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* typing text */
+.typing {
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 3s steps(40, end) forwards;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.hidden {
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div id="start" class="fade">
+  <h2 class="typing">sayangku kamu menerima surat...</h2>
+</div>
+
+<div id="content" class="hidden">
+  <h1>💌 untuk kuroo 💙</h1>
+  <p id="text"></p>
+</div>
+
+<audio id="audio">
+  <source src="cat.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+setTimeout(() => {
+  document.getElementById("start").style.display = "none";
+  document.getElementById("content").classList.remove("hidden");
+
+  let text = "hai kuroo...\n\nselamat ulang tahun ya 💙\nsekarang kamu udah 14 tahun...\naku sayang kamu 🤍";
+
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      document.getElementById("text").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 50);
+    }
+  }
+  typing();
+
+  document.getElementById("audio").play();
+}, 3000);
+</script>
+
+</body>
+</html>
